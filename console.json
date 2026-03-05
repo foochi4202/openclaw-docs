@@ -58,8 +58,8 @@
       ]
     },
     {
-      "name": "r.MaxFPS",
-      "category": "Renderer",
+      "name": "t.MaxFPS",
+      "category": "Timer",
       "type": "float",
       "default_value": "0",
       "description": "Maximum FPS cap (0 = unlimited)",
