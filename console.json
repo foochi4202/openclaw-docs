@@ -1,0 +1,269 @@
+{
+  "metadata": {
+    "name": "UE5 Console Variables and Commands",
+    "version": "5.5",
+    "source": "https://koloved.github.io/uevariables/",
+    "last_updated": "2026-03-05",
+    "total_count": 8870,
+    "categories": [
+      "All",
+      "Renderer",
+      "Sound",
+      "Timer",
+      "RHI",
+      "Network",
+      "Game",
+      "ScalabilityGroups",
+      "Slate",
+      "Physics",
+      "Showflags",
+      "Particle FX system"
+    ]
+  },
+  "console_variables": [
+    {
+      "name": "r.ScreenPercentage",
+      "category": "Renderer",
+      "type": "float",
+      "default_value": "100",
+      "description": "Screen percentage for dynamic resolution",
+      "help": "Values: 50-200",
+      "common_usage": [
+        "Performance optimization",
+        "Quality adjustment"
+      ]
+    },
+    {
+      "name": "r.ShadowQuality",
+      "category": "Renderer",
+      "type": "int",
+      "default_value": "5",
+      "description": "Shadow quality level",
+      "help": "Values: 0-5",
+      "common_usage": [
+        "Shadow quality adjustment",
+        "Performance optimization"
+      ]
+    },
+    {
+      "name": "r.VSync",
+      "category": "Renderer",
+      "type": "bool",
+      "default_value": "0",
+      "description": "Enable vertical synchronization",
+      "help": "Values: 0/1",
+      "common_usage": [
+        "Screen tearing prevention",
+        "Frame rate limiting"
+      ]
+    },
+    {
+      "name": "r.MaxFPS",
+      "category": "Renderer",
+      "type": "float",
+      "default_value": "0",
+      "description": "Maximum FPS cap (0 = unlimited)",
+      "help": "Values: 0, 30, 60, 120, 144, 240",
+      "common_usage": [
+        "Frame rate limiting",
+        "Power saving",
+        "Thermal management"
+      ]
+    },
+    {
+      "name": "stat FPS",
+      "category": "Showflags",
+      "type": "command",
+      "description": "Display FPS counter on screen",
+      "help": "Toggle FPS display",
+      "common_usage": [
+        "Performance monitoring",
+        "Debugging"
+      ]
+    },
+    {
+      "name": "stat Memory",
+      "category": "Showflags",
+      "type": "command",
+      "description": "Display memory usage statistics",
+      "help": "Show memory stats",
+      "common_usage": [
+        "Memory profiling",
+        "Optimization"
+      ]
+    },
+    {
+      "name": "stat Unit",
+      "category": "Showflags",
+      "type": "command",
+      "description": "Display frame time statistics",
+      "help": "Show frame time breakdown",
+      "common_usage": [
+        "Performance profiling",
+        "Bottleneck identification"
+      ]
+    },
+    {
+      "name": "slomo",
+      "category": "Game",
+      "type": "float",
+      "default_value": "1.0",
+      "description": "Global game speed multiplier",
+      "help": "Values: 0.0-10.0",
+      "common_usage": [
+        "Slow motion effects",
+        "Time dilation",
+        "Debugging"
+      ]
+    },
+    {
+      "name": "pause",
+      "category": "Game",
+      "type": "command",
+      "description": "Pause the game",
+      "help": "Toggle pause state",
+      "common_usage": [
+        "Game pause",
+        "Debugging"
+      ]
+    },
+    {
+      "name": "ghost",
+      "category": "Game",
+      "type": "command",
+      "description": "Enable ghost mode (no collision)",
+      "help": "Toggle ghost mode",
+      "common_usage": [
+        "Level navigation",
+        "Debugging",
+        "Cheat"
+      ]
+    },
+    {
+      "name": "fly",
+      "category": "Game",
+      "type": "command",
+      "description": "Enable fly mode",
+      "help": "Toggle fly mode",
+      "common_usage": [
+        "Level navigation",
+        "Debugging"
+      ]
+    },
+    {
+      "name": "show Collision",
+      "category": "Showflags",
+      "type": "command",
+      "description": "Toggle collision visibility",
+      "help": "Show/hide collision meshes",
+      "common_usage": [
+        "Collision debugging",
+        "Level design"
+      ]
+    },
+    {
+      "name": "show Bounds",
+      "category": "Showflags",
+      "type": "command",
+      "description": "Toggle bounds visibility",
+      "help": "Show/hide actor bounds",
+      "common_usage": [
+        "Bounds debugging",
+        "Optimization"
+      ]
+    },
+    {
+      "name": "r.AntiAliasingMethod",
+      "category": "Renderer",
+      "type": "int",
+      "default_value": "2",
+      "description": "Anti-aliasing method",
+      "help": "0: None, 1: FXAA, 2: TAA, 3: MSAA",
+      "common_usage": [
+        "Quality adjustment",
+        "Performance optimization"
+      ]
+    },
+    {
+      "name": "r.Shadow.MaxResolution",
+      "category": "Renderer",
+      "type": "int",
+      "default_value": "2048",
+      "description": "Maximum shadow map resolution",
+      "help": "Values: 512, 1024, 2048, 4096",
+      "common_usage": [
+        "Shadow quality",
+        "Performance optimization"
+      ]
+    }
+  ],
+  "animation_variables": [
+    {
+      "name": "a.AnimNode.LegIK.Enable",
+      "category": "Animation",
+      "type": "bool",
+      "default_value": "1",
+      "description": "Toggle LegIK node",
+      "help": "Enable/disable Leg IK"
+    },
+    {
+      "name": "a.AnimNode.FootPlacement.Enable",
+      "category": "Animation",
+      "type": "bool",
+      "default_value": "1",
+      "description": "Enable/disable Foot Placement",
+      "help": "Toggle foot placement system"
+    },
+    {
+      "name": "a.AnimNode.MotionMatching.DebugDrawInfo",
+      "category": "Animation",
+      "type": "bool",
+      "default_value": "0",
+      "description": "Draw motion matching debug info",
+      "help": "Debug visualization"
+    }
+  ],
+  "physics_variables": [
+    {
+      "name": "p.Chaos.Solver.Active",
+      "category": "Physics",
+      "type": "bool",
+      "default_value": "1",
+      "description": "Activate Chaos physics solver",
+      "help": "Toggle physics simulation"
+    }
+  ],
+  "network_variables": [
+    {
+      "name": "net.MaxRepArraySize",
+      "category": "Network",
+      "type": "int",
+      "default_value": "1024",
+      "description": "Maximum replicated array size",
+      "help": "Network optimization"
+    }
+  ],
+  "usage_examples": {
+    "performance_optimization": [
+      "r.ScreenPercentage 75",
+      "r.ShadowQuality 3",
+      "r.MaxFPS 60"
+    ],
+    "debugging": [
+      "stat FPS",
+      "stat Memory",
+      "show Collision"
+    ],
+    "quality_settings": [
+      "r.AntiAliasingMethod 2",
+      "r.Shadow.MaxResolution 2048",
+      "r.VSync 1"
+    ]
+  },
+  "notes": [
+    "Console variables persist across sessions when set in Editor",
+    "Use '?' after variable name to see help: r.ScreenPercentage?",
+    "Most renderer variables require level restart to take full effect",
+    "Stat commands toggle on/off when executed repeatedly"
+  ]
+}

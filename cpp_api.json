@@ -1,0 +1,248 @@
+{
+  "metadata": {
+    "name": "Unreal Engine 5 C++ API",
+    "version": "5.5",
+    "source": "https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-5-5-documentation",
+    "last_updated": "2026-03-05",
+    "description": "UE5 C++ API Reference for OpenClaw Integration"
+  },
+  "core_modules": {
+    "Core": {
+      "description": "Fundamental types and utilities",
+      "key_classes": [
+        "FString",
+        "FName",
+        "FText",
+        "TArray",
+        "TMap",
+        "TSet",
+        "FVector",
+        "FRotator",
+        "FTransform",
+        "FColor",
+        "FLinearColor"
+      ]
+    },
+    "CoreUObject": {
+      "description": "UObject system and reflection",
+      "key_classes": [
+        "UObject",
+        "UClass",
+        "UFunction",
+        "UProperty",
+        "UField",
+        "UEnum",
+        "UStruct"
+      ]
+    },
+    "Engine": {
+      "description": "Engine core functionality",
+      "key_classes": [
+        "UEngine",
+        "UGameEngine",
+        "UWorld",
+        "ULevel",
+        "AActor",
+        "UActorComponent",
+        "USceneComponent",
+        "APawn",
+        "ACharacter",
+        "APlayerController",
+        "AGameModeBase",
+        "AGameStateBase"
+      ]
+    }
+  },
+  "editor_modules": {
+    "UnrealEd": {
+      "description": "Editor functionality",
+      "key_classes": [
+        "UEditorEngine",
+        "FEditorFileUtils",
+        "FLevelEditorModule",
+        "FAssetToolsModule",
+        "UAssetEditorSubsystem"
+      ],
+      "key_functions": [
+        {
+          "name": "FEditorFileUtils::SaveMap",
+          "signature": "bool SaveMap(UWorld* World, const FString& Filename)",
+          "description": "Save a level to disk"
+        },
+        {
+          "name": "FEditorFileUtils::LoadMap",
+          "signature": "bool LoadMap(const FString& Filename)",
+          "description": "Load a level from disk"
+        },
+        {
+          "name": "FEditorFileUtils::NewMap",
+          "signature": "void NewMap()",
+          "description": "Create a new blank level"
+        }
+      ]
+    }
+  },
+  "gameplay_classes": {
+    "AActor": {
+      "description": "Base class for all actors in the world",
+      "key_methods": [
+        {
+          "name": "SetActorLocation",
+          "signature": "bool SetActorLocation(FVector NewLocation, bool bSweep = false, FHitResult* OutSweepHitResult = nullptr, ETeleportType Teleport = ETeleportType::None)",
+          "description": "Set actor world location"
+        },
+        {
+          "name": "SetActorRotation",
+          "signature": "bool SetActorRotation(FRotator NewRotation, ETeleportType Teleport = ETeleportType::None)",
+          "description": "Set actor world rotation"
+        },
+        {
+          "name": "GetActorLocation",
+          "signature": "FVector GetActorLocation() const",
+          "description": "Get actor world location"
+        },
+        {
+          "name": "Destroy",
+          "signature": "bool Destroy(bool bNetForce = false, bool bShouldModifyLevel = true)",
+          "description": "Destroy the actor"
+        },
+        {
+          "name": "SpawnActor",
+          "signature": "AActor* SpawnActor(UClass* Class, FVector Location, FRotator Rotation, FActorSpawnParameters SpawnParameters)",
+          "description": "Spawn an actor of specified class"
+        }
+      ]
+    },
+    "UWorld": {
+      "description": "Represents a game world",
+      "key_methods": [
+        {
+          "name": "SpawnActor",
+          "signature": "AActor* SpawnActor(UClass* Class, FVector Location, FRotator Rotation, FActorSpawnParameters SpawnParameters)",
+          "description": "Spawn an actor in the world"
+        },
+        {
+          "name": "GetName",
+          "signature": "FString GetName() const",
+          "description": "Get world name"
+        }
+      ]
+    }
+  },
+  "console_system": {
+    "IConsoleManager": {
+      "description": "Global console variable and command manager",
+      "key_methods": [
+        {
+          "name": "FindConsoleVariable",
+          "signature": "IConsoleVariable* FindConsoleVariable(const TCHAR* Name)",
+          "description": "Find a console variable by name"
+        },
+        {
+          "name": "RegisterConsoleCommand",
+          "signature": "void RegisterConsoleCommand(const TCHAR* Name, const TCHAR* Help, FConsoleCommandDelegate Command, uint32 Flags = ECVF_Default)",
+          "description": "Register a console command"
+        },
+        {
+          "name": "ForEachConsoleObjectThatStartsWith",
+          "signature": "void ForEachConsoleObjectThatStartsWith(FConsoleObjectVisitor Visitor, const TCHAR* Prefix)",
+          "description": "Iterate console objects with prefix"
+        }
+      ]
+    },
+    "IConsoleVariable": {
+      "description": "Console variable interface",
+      "key_methods": [
+        {
+          "name": "Set",
+          "signature": "void Set(float Value) / void Set(int32 Value) / void Set(const TCHAR* Value)",
+          "description": "Set variable value"
+        },
+        {
+          "name": "GetString",
+          "signature": "FString GetString() const",
+          "description": "Get value as string"
+        },
+        {
+          "name": "IsVariableFloat",
+          "signature": "bool IsVariableFloat() const",
+          "description": "Check if float type"
+        },
+        {
+          "name": "IsVariableInt",
+          "signature": "bool IsVariableInt() const",
+          "description": "Check if int type"
+        },
+        {
+          "name": "IsVariableBool",
+          "signature": "bool IsVariableBool() const",
+          "description": "Check if bool type"
+        }
+      ]
+    }
+  },
+  "utility_functions": {
+    "FPaths": {
+      "description": "Path utilities",
+      "key_methods": [
+        {
+          "name": "ProjectContentDir",
+          "signature": "FString ProjectContentDir()",
+          "description": "Get project Content directory"
+        },
+        {
+          "name": "Combine",
+          "signature": "FString Combine(const FString& Path1, const FString& Path2)",
+          "description": "Combine two paths"
+        }
+      ]
+    },
+    "FFileHelper": {
+      "description": "File I/O utilities",
+      "key_methods": [
+        {
+          "name": "SaveStringToFile",
+          "signature": "bool SaveStringToFile(const FString& String, const TCHAR* Filename)",
+          "description": "Save string to file"
+        },
+        {
+          "name": "LoadFileToString",
+          "signature": "bool LoadFileToString(FString& Result, const TCHAR* Filename)",
+          "description": "Load file to string"
+        }
+      ]
+    }
+  },
+  "macros": {
+    "UE_LOG": {
+      "signature": "UE_LOG(Category, Verbosity, Format, ...)",
+      "description": "Logging macro",
+      "example": "UE_LOG(LogTemp, Log, TEXT(\"Hello %s\"), *Name);"
+    },
+    "TEXT": {
+      "signature": "TEXT(\"String\")",
+      "description": "Wide character string literal",
+      "example": "TEXT(\"Hello World\")"
+    }
+  },
+  "openclaw_integration": {
+    "FOpenClawTools": {
+      "description": "OpenClaw plugin tools implementation",
+      "key_methods": [
+        "ExecuteTool",
+        "Level_GetCurrent",
+        "Level_Create",
+        "Actor_Create",
+        "Console_SetVariable",
+        "Console_GetVariable"
+      ],
+      "dependencies": [
+        "IConsoleManager",
+        "UEditorEngine",
+        "FEditorFileUtils",
+        "AActor",
+        "UWorld"
+      ]
+    }
+  }
+}

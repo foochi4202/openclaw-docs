@@ -1,0 +1,204 @@
+{
+  "metadata": {
+    "name": "Unreal Engine 5 Python API",
+    "version": "5.5",
+    "source": "https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/index",
+    "last_updated": "2026-03-05",
+    "description": "UE5 Python API for Editor Scripting and Automation"
+  },
+  "main_module": {
+    "name": "unreal",
+    "description": "Main Unreal Python module",
+    "import": "import unreal"
+  },
+  "native_types": [
+    {
+      "name": "unreal.Array",
+      "description": "Dynamic array container",
+      "example": "arr = unreal.Array(unreal.Actor)"
+    },
+    {
+      "name": "unreal.Map",
+      "description": "Key-value map container",
+      "example": "m = unreal.Map(str, int)"
+    },
+    {
+      "name": "unreal.Set",
+      "description": "Unique value set container",
+      "example": "s = unreal.Set(str)"
+    },
+    {
+      "name": "unreal.Name",
+      "description": "Efficient string for identifiers",
+      "example": "name = unreal.Name('MyActor')"
+    },
+    {
+      "name": "unreal.Text",
+      "description": "Localized text",
+      "example": "text = unreal.Text('Hello')"
+    }
+  ],
+  "editor_modules": {
+    "unreal.EditorLevelLibrary": {
+      "description": "Level editing utilities",
+      "functions": [
+        {
+          "name": "get_editor_world",
+          "signature": "get_editor_world() -> World",
+          "description": "Get the current editor world"
+        },
+        {
+          "name": "get_selected_level_actors",
+          "signature": "get_selected_level_actors() -> Array[Actor]",
+          "description": "Get selected actors in level"
+        },
+        {
+          "name": "spawn_actor_from_class",
+          "signature": "spawn_actor_from_class(actor_class, location, rotation) -> Actor",
+          "description": "Spawn actor at location"
+        },
+        {
+          "name": "destroy_actor",
+          "signature": "destroy_actor(actor)",
+          "description": "Destroy an actor"
+        }
+      ]
+    },
+    "unreal.EditorAssetLibrary": {
+      "description": "Asset management utilities",
+      "functions": [
+        {
+          "name": "load_asset",
+          "signature": "load_asset(asset_path) -> Object",
+          "description": "Load asset by path"
+        },
+        {
+          "name": "save_asset",
+          "signature": "save_asset(asset_path)",
+          "description": "Save asset to disk"
+        },
+        {
+          "name": "list_assets",
+          "signature": "list_assets(asset_path, recursive=True) -> Array[str]",
+          "description": "List assets in path"
+        }
+      ]
+    }
+  },
+  "gameplay_modules": {
+    "unreal.GameplayStatics": {
+      "description": "Gameplay utility functions",
+      "functions": [
+        {
+          "name": "get_player_controller",
+          "signature": "get_player_controller(world_context, player_index) -> PlayerController",
+          "description": "Get player controller by index"
+        },
+        {
+          "name": "get_player_pawn",
+          "signature": "get_player_pawn(world_context, player_index) -> Pawn",
+          "description": "Get player pawn by index"
+        },
+        {
+          "name": "get_all_actors_of_class",
+          "signature": "get_all_actors_of_class(world_context, actor_class) -> Array[Actor]",
+          "description": "Find all actors of class"
+        },
+        {
+          "name": "begin_spawn_actor_from_class",
+          "signature": "begin_spawn_actor_from_class(world_context, actor_class, location, rotation)",
+          "description": "Spawn actor at runtime"
+        },
+        {
+          "name": "project_world_to_screen",
+          "signature": "project_world_to_screen(player_controller, world_position) -> Vector2D",
+          "description": "Convert world to screen coordinates"
+        }
+      ]
+    }
+  },
+  "core_classes": {
+    "unreal.Actor": {
+      "description": "Base class for all placed objects",
+      "methods": [
+        {
+          "name": "set_actor_location",
+          "signature": "set_actor_location(new_location, sweep=False, teleport=False)",
+          "description": "Set world location"
+        },
+        {
+          "name": "set_actor_rotation",
+          "signature": "set_actor_rotation(new_rotation, teleport=False)",
+          "description": "Set world rotation"
+        },
+        {
+          "name": "get_actor_location",
+          "signature": "get_actor_location() -> Vector",
+          "description": "Get world location"
+        },
+        {
+          "name": "destroy_actor",
+          "signature": "destroy_actor()",
+          "description": "Destroy this actor"
+        }
+      ]
+    },
+    "unreal.Pawn": {
+      "description": "Actor that can be possessed",
+      "methods": [
+        {
+          "name": "add_movement_input",
+          "signature": "add_movement_input(world_direction, scale_value)",
+          "description": "Add movement input"
+        }
+      ]
+    },
+    "unreal.Character": {
+      "description": "Pawn with built-in movement",
+      "methods": [
+        {
+          "name": "jump",
+          "signature": "jump()",
+          "description": "Make character jump"
+        }
+      ]
+    }
+  },
+  "utility_classes": {
+    "unreal.ScopedEditorTransaction": {
+      "description": "Undo/Redo transaction scope",
+      "usage": "with unreal.ScopedEditorTransaction('My Action') as trans: ..."
+    },
+    "unreal.ScopedSlowTask": {
+      "description": "Progress dialog for long operations",
+      "usage": "with unreal.ScopedSlowTask(100, 'Processing') as task: ..."
+    }
+  },
+  "common_patterns": {
+    "spawn_actor": [
+      "import unreal",
+      "world = unreal.EditorLevelLibrary.get_editor_world()",
+      "location = unreal.Vector(0, 0, 100)",
+      "rotation = unreal.Rotator(0, 0, 0)",
+      "actor = unreal.EditorLevelLibrary.spawn_actor_from_class(unreal.StaticMeshActor, location, rotation)"
+    ],
+    "iterate_actors": [
+      "import unreal",
+      "actors = unreal.GameplayStatics.get_all_actors_of_class(None, unreal.Actor)",
+      "for actor in actors:",
+      "    print(actor.get_name())"
+    ],
+    "modify_actor": [
+      "import unreal",
+      "actor.set_actor_location(unreal.Vector(100, 200, 300))",
+      "actor.set_actor_rotation(unreal.Rotator(0, 90, 0))"
+    ]
+  },
+  "notes": [
+    "Python API requires 'Python Editor Script Plugin' enabled",
+    "Use 'unreal' module for all UE5 Python scripting",
+    "Editor scripts only work in Editor mode",
+    "Game scripts work in both Editor and packaged builds",
+    "Use ScopedEditorTransaction for undoable operations"
+  ]
+}
